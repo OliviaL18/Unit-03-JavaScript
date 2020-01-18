@@ -11,12 +11,13 @@ var lowerLetterArray = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n",
 var upperLetterArray = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
 var specialCharArray = ["!","#","$","%","&","(",")","*","+","-",".","<","=",">","?","@","[","`","^","_","{","|","}","~",":",";"];
 
-var inputTypeCount = 0;
-
 includeLowerCheck.addEventListener("click", includeLower);
 includeUpperCheck.addEventListener("click", includeUpper);
 includeNumberCheck.addEventListener("click", includeNumber);
 includeSpecCheck.addEventListener("click", includeSpecial);
+
+var inputTypeCount = 0;
+var repeatMiniString = 1;
 
 function includeLower(){
 	if (includeLowerCheck.checked == true){
@@ -24,6 +25,7 @@ function includeLower(){
 	} else {
 		inputTypeCount--;
 	}
+	var repeatMiniString = Math.ceil(128/inputTypeCount);
 };
 function includeUpper(){
 	if (includeUpperCheck.checked == true){
@@ -31,6 +33,7 @@ function includeUpper(){
 	} else {
 		inputTypeCount--;
 	}
+	var repeatMiniString = Math.ceil(128/inputTypeCount);
 };
 function includeNumber(){
 	if (includeNumberCheck.checked == true){
@@ -38,6 +41,7 @@ function includeNumber(){
 	} else {
 		inputTypeCount--;
 	}
+	var repeatMiniString = Math.ceil(128/inputTypeCount);
 };
 function includeSpecial(){
 	if (includeSpecCheck.checked == true){
@@ -45,12 +49,8 @@ function includeSpecial(){
 	} else {
 		inputTypeCount--;
 	}
+	var repeatMiniString = Math.ceil(128/inputTypeCount);
 };
-
-generateBtn.addEventListener("click", generatePasword);
-generateBtn.addEventListener("click", generatePasword);
-generateBtn.addEventListener("click", generatePasword);
-generateBtn.addEventListener("click", generatePasword);
 
 generateBtn.addEventListener("click", generatePasword);
 
@@ -67,7 +67,6 @@ function generatePasword(){
 	var length = parseInt(lengthInput);
 	if (includeNumberCheck.checked == true){
 		var number = numberArray[indexNumber];
-			console.log(number);
 	} else {
 		var number = "";
 	};
@@ -87,8 +86,9 @@ function generatePasword(){
 		var specialChar = "";
 	};
 	var miniString = lowerLetter + upperLetter + specialChar + number;
+	var fullString = 
 
-	passwordArea.innerHTML = miniString;
+	passwordArea.innerHTML = fullString;
 	}
 }
 
