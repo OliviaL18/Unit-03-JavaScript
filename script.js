@@ -17,7 +17,7 @@ includeNumberCheck.addEventListener("click", includeNumber);
 includeSpecCheck.addEventListener("click", includeSpecial);
 
 var inputTypeCount = 0;
-var repeatMiniString = 1;
+var repeatMiniString;
 
 function includeLower(){
 	if (includeLowerCheck.checked == true){
@@ -25,7 +25,7 @@ function includeLower(){
 	} else {
 		inputTypeCount--;
 	}
-	var repeatMiniString = Math.ceil(128/inputTypeCount);
+	repeatMiniString = Math.ceil(128/inputTypeCount);
 };
 function includeUpper(){
 	if (includeUpperCheck.checked == true){
@@ -33,7 +33,7 @@ function includeUpper(){
 	} else {
 		inputTypeCount--;
 	}
-	var repeatMiniString = Math.ceil(128/inputTypeCount);
+	repeatMiniString = Math.ceil(128/inputTypeCount);
 };
 function includeNumber(){
 	if (includeNumberCheck.checked == true){
@@ -41,7 +41,7 @@ function includeNumber(){
 	} else {
 		inputTypeCount--;
 	}
-	var repeatMiniString = Math.ceil(128/inputTypeCount);
+	repeatMiniString = Math.ceil(128/inputTypeCount);
 };
 function includeSpecial(){
 	if (includeSpecCheck.checked == true){
@@ -49,7 +49,7 @@ function includeSpecial(){
 	} else {
 		inputTypeCount--;
 	}
-	var repeatMiniString = Math.ceil(128/inputTypeCount);
+	repeatMiniString = Math.ceil(128/inputTypeCount);
 };
 
 generateBtn.addEventListener("click", generatePasword);
@@ -86,7 +86,7 @@ function generatePasword(){
 		var specialChar = "";
 	};
 	var miniString = lowerLetter + upperLetter + specialChar + number;
-	var fullString = 
+	var fullString = miniString.repeat(repeatMiniString);
 
 	passwordArea.innerHTML = fullString;
 	}
