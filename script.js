@@ -56,39 +56,43 @@ generateBtn.addEventListener("click", generatePasword);
 
 function generatePasword(){
 	event.preventDefault();
-	var indexNumber = Math.floor(Math.random() * 10);
-	var indexLower = Math.floor(Math.random() * 26);
-	var indexUpper = Math.floor(Math.random() * 26);
-	var indexSpec = Math.floor(Math.random() * 26);
 	var lengthInput = passwordLength.value;
+	var length = parseInt(lengthInput);
 	if (isNaN(lengthInput) || lengthInput<8 || lengthInput>128){
 		alert("Please enter a number between 8 and 128.")
 	} else {
-	var length = parseInt(lengthInput);
-	if (includeNumberCheck.checked == true){
-		var number = numberArray[indexNumber];
-	} else {
-		var number = "";
-	};
-	if (includeLowerCheck.checked == true){
-		var lowerLetter = lowerLetterArray[indexLower];
-	} else {
-		var lowerLetter = "";
-	};
-	if (includeUpperCheck.checked == true){
-		var upperLetter = upperLetterArray[indexUpper];
-	} else {
-		var upperLetter = "";
-	};
-	if (includeSpecCheck.checked == true){
-		var specialChar = specialCharArray[indexSpec];
-	} else {
-		var specialChar = "";
-	};
-	var miniString = lowerLetter + upperLetter + specialChar + number;
-	var fullString = miniString.repeat(repeatMiniString);
-
-	passwordArea.innerHTML = fullString;
+	var miniStringArray = [];
+	for(var i=0; i<repeatMiniString; i++){
+		var indexNumber = Math.floor(Math.random() * 10);
+		var indexLower = Math.floor(Math.random() * 26);
+		var indexUpper = Math.floor(Math.random() * 26);
+		var indexSpec = Math.floor(Math.random() * 26);
+		if (includeNumberCheck.checked == true){
+			var number = numberArray[indexNumber];
+		} else {
+			var number = "";
+		};
+		if (includeLowerCheck.checked == true){
+			var lowerLetter = lowerLetterArray[indexLower];
+		} else {
+			var lowerLetter = "";
+		};
+		if (includeUpperCheck.checked == true){
+			var upperLetter = upperLetterArray[indexUpper];
+		} else {
+			var upperLetter = "";
+		};
+		if (includeSpecCheck.checked == true){
+			var specialChar = specialCharArray[indexSpec];
+		} else {
+			var specialChar = "";
+		};
+		var miniString = lowerLetter + upperLetter + specialChar + number;
+		miniStringArray.push(miniString)
+	}	
+	var fullString = miniStringArray.toString();
+	var randomPassword = fullString.substr(0, length);
+	passwordArea.innerHTML = randomPassword;
 	}
 }
 
