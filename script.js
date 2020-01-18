@@ -58,7 +58,9 @@ function generatePasword(){
 	event.preventDefault();
 	var lengthInput = passwordLength.value;
 	var length = parseInt(lengthInput);
-	if (isNaN(lengthInput) || lengthInput<8 || lengthInput>128){
+	if (inputTypeCount==0){
+		alert("Please select at least 1 character type.")
+	} else if (isNaN(lengthInput) || lengthInput<8 || lengthInput>128){
 		alert("Please enter a number between 8 and 128.")
 	} else {
 	var miniStringArray = [];
@@ -90,7 +92,7 @@ function generatePasword(){
 		var miniString = lowerLetter + upperLetter + specialChar + number;
 		miniStringArray.push(miniString)
 	}	
-	var fullString = miniStringArray.toString();
+	var fullString = miniStringArray.join("");
 	var randomPassword = fullString.substr(0, length);
 	passwordArea.innerHTML = randomPassword;
 	}
